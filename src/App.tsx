@@ -1,34 +1,39 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import { useState } from "react";
+import { TodoContainer as Example1 } from "./1-example-props/todoContainer";
+import { TodoContainer as Example2 } from "./2-example-context/todoContainer";
+import { TodoContainer as Example3 } from "./3-example-context-hooks/todoContainer";
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  const [tab, setTab] = useState(0);
   return (
     <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
+      <h1>Tech Talk Context API</h1>
+      <center>
+        <button
+          onClick={() => setTab(0)}
+          style={{ background: tab === 0 ? "#002fff" : "" }}
+        >
+          Exemplo com Props
         </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+        <button
+          onClick={() => setTab(1)}
+          style={{ background: tab === 1 ? "#002fff" : "" }}
+        >
+          Exemplo com Context API
+        </button>
+        <button
+          onClick={() => setTab(2)}
+          style={{ background: tab === 2 ? "#002fff" : "" }}
+        >
+          Exemplo com Context API e Hooks
+        </button>
+      </center>
+      {tab === 0 && <Example1 />}
+      {tab === 1 && <Example2 />}
+      {tab === 2 && <Example3 />}
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
